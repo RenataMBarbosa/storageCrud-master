@@ -1,0 +1,57 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      To Do List
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-item>
+    <ion-label position="fixed">Name</ion-label>
+    <ion-input [(ngModel)]="newItem.title"></ion-input>
+  </ion-item>
+
+  <ion-item>
+    <ion-label position="fixed">Text</ion-label>
+    <ion-input [(ngModel)]="newItem.value"></ion-input>
+  </ion-item>
+
+  <ion-button expand="full" (click)="addItem()">Add Item!</ion-button>
+ 
+
+  <ion-list #mylist>
+
+    <ion-list-header>
+      <ion-label>My Items</ion-label>
+    </ion-list-header>
+
+    <ion-item-sliding *ngFor="let item of items">
+
+      <ion-item>
+        <ion-label text-wrap>
+          <ion-text color = "secondary">
+          <h3>{{ item?.title }}</h3>
+          </ion-text>
+          <ion-text color="dark">
+            <p>{{ item?.value }}</p>
+          </ion-text>
+          <p>{{ item?.modified | date:'short'}}</p>
+        </ion-label>
+       <!-- <ion-checkbox  [(ngModel)]="text-wrap.isChecked"></ion-checkbox>-->
+       <ion-checkbox slot="start" checked="true"></ion-checkbox> 
+     <!-- <ion-icon item-start [name]="home.done ? 'checkmark-circle-outline' : 'radio-button-off'"
+        (click)="home.done = !home.done">-->
+      
+    </ion-item>
+      
+      
+      <ion-item-options side="end">
+        <ion-item-option color="primary" (click)="updateItem(item)">Update</ion-item-option>
+        <ion-item-option color="danger" (click)="deleteItem(item)">Delete</ion-item-option>
+      </ion-item-options>
+    </ion-item-sliding>
+
+  </ion-list>
+
+</ion-content>

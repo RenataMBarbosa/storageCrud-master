@@ -1,0 +1,24 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>update</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button defaultHref="home"></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-item>
+    <ion-label floating>Nome</ion-label>
+    <ion-input type="text" name="Nome" [(ngModel)]="title"></ion-input>
+    
+  </ion-item>
+  
+  <ion-item>
+    <ion-label floating>Texto</ion-label>
+    <ion-input type="text" text=" text" [(ngModel)]="value"></ion-input>
+  </ion-item>
+  <ion-button expand="full" (click)="save()"> Update Item!</ion-button>
+
+</ion-content>
