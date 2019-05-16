@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController, ToastController } from '@ionic/angular';
+import { NavController, ToastController, NavParams } from '@ionic/angular';
 import { StorageService, Item } from '../services/storage.service';
 @Component({
   selector: 'app-updaten',
@@ -10,7 +10,13 @@ export class UpdatenPage implements OnInit {
 
    model : Item ;
    key: string;
-  constructor(public navCtrl: NavController,private toast : ToastController, private storageServic : StorageService  ){
+  constructor(public navParams: NavParams,public navCtrl: NavController,private toast : ToastController, private storageServic : StorageService  ){
+    if (this.navParams.data.Item && this.navParams.data.key) {
+      this.model = this.navParams.data.Item;
+      this.key =  this.navParams.data.key;
+    } else {
+      this.model = new Item();
+    }
   }
 
   save()
@@ -28,8 +34,8 @@ export class UpdatenPage implements OnInit {
 
   private saveContact() {
     if (this.key) {
-      console.log( this.saveContact);
-      return this.storageServic.updateItem ( this.model);
+      
+        return this.storageServic.updateItem(this.key, this.model);
     
     }
     return Promise.reject();
