@@ -10,13 +10,13 @@ export class UpdatenPage implements OnInit {
 
    model : Item ;
    key: string;
-  constructor(public navParams: NavParams,public navCtrl: NavController,private toast : ToastController, private storageServic : StorageService  ){
-    if (this.navParams.data.Item && this.navParams.data.key) {
+  constructor(public navCtrl: NavController,private toast : ToastController, private storageServic : StorageService  ){
+    /*if (this.navParams.data.Item && this.navParams.data.key) {
       this.model = this.navParams.data.Item;
       this.key =  this.navParams.data.key;
     } else {
       this.model = new Item();
-    }
+    }*/
   }
 
   save()

@@ -19,11 +19,17 @@ export class HomePage {
 
   @ViewChild('mylist')mylist: IonList;
 
+  splash = true;
+ // secondPage = SecondPage;
+
   constructor(private router : Router,private storageService: StorageService, private plt: Platform, private toastController: ToastController, public navCtrl : NavController) {
     this.plt.ready().then(() => {
       this.loadItems();
     });
   }
+  ionViewDidLoad() {
+    setTimeout(() =>this.splash=false, 4000);
+ }
 
   // CREATE
   addItem() {

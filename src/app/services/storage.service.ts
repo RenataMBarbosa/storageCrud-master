@@ -38,7 +38,7 @@ export class StorageService {
       }
     
     });
-    return this.save(key,item);
+    
   }
 
   // READ
@@ -47,17 +47,13 @@ export class StorageService {
   }
 
   // UPDATE
-  updateItem(key: string, item: Item){//: Promise<any> {
-    /*return this.storage.get(ITEMS_KEY).then((items: Item[]) => { if (!items || items.length === 0) {return null;}
+  updateItem(key: string, item: Item): Promise<any> {
+    return this.storage.get(key).then((items: Item[]) => { if (!items || items.length === 0) {return null;}
    let newItems: Item[] = [];for (let i of items) {if (i.id === item.id) { newItems.push(item);} else {newItems.push(i); }
-  }console.log(newItems); this.storage.set(ITEMS_KEY, newItems);});*/
- return this.save(key, item);
-
+  }console.log(newItems); this.storage.set(key, newItems);});
 
   }
-  private save( key :string, item: Item) {
-    return this.storage.set(key, item);
-  }
+
 
   // DELETE
   deleteItem(id: number): Promise<Item> {
