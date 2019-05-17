@@ -47,10 +47,16 @@ export class StorageService {
   }
 
   // UPDATE
-  updateItem(key: string, item: Item): Promise<any> {
-    return this.storage.get(key).then((items: Item[]) => { if (!items || items.length === 0) {return null;}
-   let newItems: Item[] = [];for (let i of items) {if (i.id === item.id) { newItems.push(item);} else {newItems.push(i); }
-  }console.log(newItems); this.storage.set(key, newItems);});
+  updateItem( item: Item): Promise<any> {
+    return this.storage.get(key).then((items: Item[]) =>
+     { if (!items || items.length === 0)
+       {return null;}
+    let newItems: Item[] = [];for (let i of items) 
+    {if (i.id === item.id) { newItems.push(item);} 
+    else {newItems.push(i); }
+  }
+   
+   return  this.storage.set(key, newItems);});
 
   }
 

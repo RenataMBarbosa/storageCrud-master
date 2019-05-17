@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { StorageService, Item, Itemlist } from '../services/storage.service';
-import { Platform, ToastController, IonList, NavController, IonItemSliding } from '@ionic/angular';
+import { Platform, ToastController, IonList, NavController } from '@ionic/angular';
 import { Router}  from '@angular/router';
-import { Key } from 'protractor';
+
 
 @Component({
   selector: 'app-home',
@@ -19,17 +19,14 @@ export class HomePage {
 
   @ViewChild('mylist')mylist: IonList;
 
-  splash = true;
- // secondPage = SecondPage;
+  
 
   constructor(private router : Router,private storageService: StorageService, private plt: Platform, private toastController: ToastController, public navCtrl : NavController) {
     this.plt.ready().then(() => {
       this.loadItems();
     });
   }
-  ionViewDidLoad() {
-    setTimeout(() =>this.splash=false, 4000);
- }
+  
 
   // CREATE
   addItem() {
@@ -52,8 +49,8 @@ export class HomePage {
  
 
   // UPDATE
-  updateItem(item : Itemlist, date: Item) {
-
+  updateItem(item : Itemlist) {
+    
     
     //item.title = `Atualizado: ${item.title}`;
     //date.modified = Date.now();
@@ -61,7 +58,8 @@ export class HomePage {
    //let obj = JSON.parse(json);
    //navigateForward(url: string | UrlTree | any[], options?: NavigationOptions): Promise<boolean>;
    //this.navCtrl.navigateForward('/updaten');
-   this.router.navigate (['/updaten', {Key :item.key, item :item.item }] );
+   
+   this.router.navigate (['/updaten' ] );
     this.mylist.closeSlidingItems(); 
     this.loadItems();
     //this.storageService.updateItem(item).then(item => {
