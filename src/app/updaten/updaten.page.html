@@ -11,14 +11,14 @@
 
   <ion-item>
     <ion-label floating>Nome</ion-label>
-    <ion-input type="text" name="Nome" [(ngModel)]="newItems.title"></ion-input>
+    <ion-input type="text" name="Nome" [(ngModel)]="newItem.title"></ion-input>
     
   </ion-item>
   
   <ion-item>
     <ion-label floating>Texto</ion-label>
-    <ion-input type="text" text=" text" [(ngModel)]="newItems.value"></ion-input>
+    <ion-input type="text" text=" text" [(ngModel)]="newItem.value"></ion-input>
   </ion-item>
-  <ion-button expand="full" (click)="save()"> Update Item!</ion-button>
+  <ion-button expand="full" (click)="addItem()"> Update Item!</ion-button>
 
 </ion-content>

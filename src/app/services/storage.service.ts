@@ -1,11 +1,13 @@
 import { Injectable } from '@angular/core';
 import { Storage } from '@ionic/storage';
+import { DatePipe } from '@angular/common';
 
 export class Item {
   id: number = null;
   title: string = null;
   value: string = null;
   modified: number = null;
+  ano: Date;
 
   constructor(values = {}) {
     Object.keys(this)
@@ -24,10 +26,11 @@ const key = ITEMS_KEY;
 })
 export class StorageService {
 
-  constructor(private storage: Storage) { }
+  constructor(private storage: Storage, private datepipe: DatePipe) { }
 
   // CREATE
   addItem(item: Item): Promise<any> {
+    //let key = this.datepipe.transform(new Date(), "ddMMyyyyHHmmss");
     return this.storage.get(key).then((items: Item[]) => {
       if (items) {
         items.push(item);
@@ -47,7 +50,7 @@ export class StorageService {
   }
 
   // UPDATE
-  updateItem( item: Item): Promise<any> {
+  updateItem( key : string,item: Item): Promise<any> {
     return this.storage.get(key).then((items: Item[]) =>
      { if (!items || items.length === 0)
        {return null;}

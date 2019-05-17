@@ -17,7 +17,10 @@
     <ion-label position="fixed">Text</ion-label>
     <ion-input [(ngModel)]="newItem.value"></ion-input>
   </ion-item>
-
+  <ion-item>
+    <ion-label stacked>Data</ion-label>
+    <ion-datetime displayFormat="DD/MM/YYYY" name="data" [(ngModel)]="newItem.ano"></ion-datetime>
+  </ion-item>
   <ion-button expand="full" (click)="addItem()">Add Item!</ion-button>
  
 
@@ -36,8 +39,13 @@
           </ion-text>
           <ion-text color="dark">
             <p>{{ item?.value }}</p>
+            
+          </ion-text>
+          <ion-text color= "dark">
+            <p> Data</p>
           </ion-text>
           <p>{{ item?.modified | date:'short'}}</p>
+          
         </ion-label>
        <!-- <ion-checkbox  [(ngModel)]="text-wrap.isChecked"></ion-checkbox>-->
        <ion-checkbox slot="start" checked="true"></ion-checkbox> 
