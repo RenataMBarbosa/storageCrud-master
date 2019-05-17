@@ -54,10 +54,6 @@ export class HomePage {
     
     //item.title = `Atualizado: ${item.title}`;
     //date.modified = Date.now();
-   //var json =  '{" chave": ITEMS_KEY , "itemS" : item }';
-   //let obj = JSON.parse(json);
-   //navigateForward(url: string | UrlTree | any[], options?: NavigationOptions): Promise<boolean>;
-   //this.navCtrl.navigateForward('/updaten');
    
    this.router.navigate (['/updaten' ] );
     this.mylist.closeSlidingItems(); 
